@@ -5,7 +5,7 @@ let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'your heroku backend url here'
+  baseURL = 'https://mockbusters.herokuapp.com'
 }
 
 class Movieinfo extends Component {
