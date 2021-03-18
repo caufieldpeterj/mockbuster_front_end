@@ -4,13 +4,14 @@ import Movielist from './Movielist'
 import Movieinfo from './Movieinfo'
 
 
-let baseURL = ''
-
+let baseURL = 'https://mockbusters.herokuapp.com'
+/*
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
   baseURL = 'https://mockbusters.herokuapp.com'
 }
+*/
 
 export default class Home extends Component {
   constructor() {

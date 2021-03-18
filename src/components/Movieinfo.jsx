@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
-let baseURL = ''
-
+let baseURL = 'https://mockbusters.herokuapp.com'
+/*
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
   baseURL = 'https://mockbusters.herokuapp.com'
 }
+*/
 
 class Movieinfo extends Component {
   constructor(props) {

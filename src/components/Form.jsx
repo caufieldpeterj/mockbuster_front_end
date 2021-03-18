@@ -4,13 +4,14 @@ import { Link, Route, Switch, Redirect } from 'react-router-dom';
 
 // import { Field, Control, Label, Input, Textarea, Select, Checkbox, Radio, Help, InputFile } from 'react-bulma-components'
 
-let baseURL = ''
-
+let baseURL = 'https://mockbusters.herokuapp.com'
+/*
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
   baseURL = 'https://mockbusters.herokuapp.com'
 }
+*/
 
 class Form extends Component {
   constructor(props) {
