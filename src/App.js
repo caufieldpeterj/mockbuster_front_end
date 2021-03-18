@@ -21,7 +21,7 @@ let baseURL = '';
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://mockbusters.herokuapp.com/'
+  baseURL = 'https://mockbusters.herokuapp.com'
 }
 console.log('current base URL ' + baseURL); 
 
