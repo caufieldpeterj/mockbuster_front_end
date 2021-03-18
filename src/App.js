@@ -12,7 +12,7 @@ import Signup from './components/Signup'
 
 // == CSS == //
 import './App.css';
-import 'bulma/css/bulma.css'
+// import 'bulma/css/bulma.css'
 // import './App.sass';
 
 // == CONNECTION TO DB == //
@@ -21,7 +21,7 @@ let baseURL = '';
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://mockbusters.herokuapp.com'
+  baseURL = 'your heroku backend url here'
 }
 console.log('current base URL ' + baseURL); 
 

@@ -9,7 +9,7 @@ let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
-  baseURL = 'https://mockbusters.herokuapp.com'
+  baseURL = 'your heroku backend url here'
 }
 
 class Form extends Component {
@@ -31,23 +31,6 @@ class Form extends Component {
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value })
   }
-
-  // handleAddMovie (movie) {
-  //   const copyMovies = [...this.state.movies]
-  //   copyMovies.unshift(movie)
-  //   this.setState({
-  //     movies: copyMovies,
-  //     title: '',
-  //     director: '',
-  //     year: 0, 
-  //     platform: '',
-  //     description: '',
-  //     image: '' 
-  //   })
-  // }
-
-
-
 
   handleSubmit(event) {
     event.preventDefault()
@@ -87,10 +70,6 @@ class Form extends Component {
 
       ).catch(error => console.log({ 'Error': error }))
   }
-
-
-
-
 
   render() {
     return (
