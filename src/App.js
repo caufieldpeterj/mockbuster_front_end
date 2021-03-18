@@ -16,13 +16,14 @@ import './App.css';
 // import './App.sass';
 
 // == CONNECTION TO DB == //
-let baseURL = ''; 
-
+let baseURL = 'https://mockbusters.herokuapp.com'; 
+/*
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:3003'
 } else {
   baseURL = 'https://mockbusters.herokuapp.com'
 }
+*/
 console.log('current base URL ' + baseURL); 
 
 class App extends Component {
