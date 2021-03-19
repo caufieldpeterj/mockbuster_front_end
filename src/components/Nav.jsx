@@ -15,7 +15,7 @@ class Nav extends Component {
         <div className="navbar-brand">
           <Link to="/">
             <figure className="image is-96x96 ml-3">
-              <img src="../img/Blockbuster_Video.png" alt="bbuster" className="py-1 px-1 " />
+              <img src="https://iconape.com/wp-content/png_logo_vector/blockbuster-video-1.png" alt="bbuster" className="py-1 px-1 " />
               {/* ../img/Blockbuster_Video.png */}
               {/* https://iconape.com/wp-content/png_logo_vector/blockbuster-video-1.png */}
             </figure>
@@ -26,7 +26,7 @@ class Nav extends Component {
             <div className="buttons">
 
     
-              <Link to="/signup">
+              {/* <Link to="/signup">
                 <a className="button is-link m-3">
                   <strong>Sign up</strong>
                 </a>
@@ -36,7 +36,7 @@ class Nav extends Component {
                 <a className="button is-info m-3">
                   Log in
                 </a>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

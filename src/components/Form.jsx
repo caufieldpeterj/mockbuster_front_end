@@ -21,7 +21,7 @@ class Form extends Component {
       platform: '',
       description: '',
       image: '',
-      baseURL: 'http://www.omdbapi.com/?',
+      baseURL: 'https://www.omdbapi.com/?',
       apikey: 'apikey=' + '98e3fb1f',
       query: '&t=',
       movieTitle: '',
