@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch, Redirect } from 'react-router-dom';
-import Omdb from './Omdb'
 
-
-// import { Field, Control, Label, Input, Textarea, Select, Checkbox, Radio, Help, InputFile } from 'react-bulma-components'
 
 let baseURL = 'https://mockbusters.herokuapp.com'
 /*
@@ -29,7 +25,7 @@ class Form extends Component {
       apikey: 'apikey=' + '98e3fb1f',
       query: '&t=',
       movieTitle: '',
-      searchURL: '', 
+      searchURL: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -40,25 +36,25 @@ class Form extends Component {
     this.setState({ [event.target.id]: event.target.value })
   }
 
-  handleOmdbSubmit (event) {
+  handleOmdbSubmit(event) {
     event.preventDefault()
     this.setState({
-      searchURL: this.state.baseURL + this.state.apikey + this.state.query +  this.state.movieTitle
+      searchURL: this.state.baseURL + this.state.apikey + this.state.query + this.state.movieTitle
     }, () => {
       fetch(this.state.searchURL)
-      .then(response => {
-        return response.json()
-      }).then(json => this.setState({
-        movie: json,
-        movieTitle:'',
-        title: json.Title,
-        director: json.Director,
-        year: '',
-        platform: json.Type,
-        description: json.Plot,
-        image: json.Poster
-      }), 
-      err => console.log(err))
+        .then(response => {
+          return response.json()
+        }).then(json => this.setState({
+          movie: json,
+          movieTitle: '',
+          title: json.Title,
+          director: json.Director,
+          year: '',
+          platform: json.Type,
+          description: json.Plot,
+          image: json.Poster
+        }),
+          err => console.log(err))
     })
   }
 
@@ -94,7 +90,7 @@ class Form extends Component {
           description: '',
           image: ''
         })
-      }).then( 
+      }).then(
         console.log("this then statement")
         // this.props.history.push('/');
 
@@ -104,37 +100,51 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="movieForm column m-2">
-        
-        <h1 className="is-size-4 has-text-link has-background-warning has-text-centered m-3 is-uppercase has-text-weight-bold	">Add a Movie</h1>
+      <div className="movieForm column m-2 p-4 is-warning">
 
-        <form onSubmit={this.handleOmdbSubmit}>
-          <label htmlFor='movieTitle'>OMDB Title</label>
-          <input
-            id='movieTitle'
-            type='text'
-            value={this.state.movieTitle}
-            onChange={this.handleChange}
-          />
-          <input
-            type='submit'
-            value='Find Movie Info'
-          />
-        </form>
+        <h1 className="is-size-3 has-text-link has-background-warning has-text-centered m-3 p-2 is-uppercase has-text-weight-bold	">Add Movie Or TV Show</h1>
+
+        <div className="column">
+          {/* OMDB SUBMIT */}
+
+
+
+
+          <form onSubmit={this.handleOmdbSubmit}>
+            <div className="field has-addons is-12 mb-4">
+              <p className="control has-icons-left has-icons-right is-expanded">
+
+                <div className="control is-expanded">
+
+                  <input className="input is-large is-info" type="text" placeholder="Search Movie" onChange={this.handleChange} id="movieTitle" name="movieTitle" value={this.state.movieTitle} />
+                  <span className="icon is-large is-left">
+                    <i className="fab fa-imdb" />
+                  </span>
+                </div>
+              </p>
+
+
+              <div className="control">
+                <button className="button is-link has-background-link is-large" type="submit" value='Find Movie Info'>Find Movie</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
 
 
 
 
         <form onSubmit={this.handleSubmit}>
 
-        {/* TITLE */}
-          <div className="column">
+          {/* TITLE */}
+          <div className="column mb-2">
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <div className="control">
-                  <input className="input" type="text" placeholder="Title" onChange={this.handleChange} id="title" name="title" value={this.state.title} />
+                  <input className="input is-large" type="text" placeholder="Title" onChange={this.handleChange} id="title" name="title" value={this.state.title} />
                   <span className="icon is-small is-left">
-                    <i className="fas fa-book-reader" />
+                    <i className="fas fa-film" />
                   </span>
                 </div>
               </p>
@@ -142,11 +152,40 @@ class Form extends Component {
           </div>
 
           {/* DIRECTOR */}
-          <div className="column">
+          <div className="column mb-2">
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <div className="control">
-                  <input className="input" type="text" placeholder="Director" onChange={this.handleChange} id="director" name="director" value={this.state.director} />
+                  <input className="input is-large" type="text" placeholder="Director" onChange={this.handleChange} id="director" name="director" value={this.state.director} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-female" />
+                  </span>
+                </div>
+              </p>
+            </div>
+          </div>
+
+          {/* YEAR */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large" type="text" placeholder="Year" onChange={this.handleChange} id="year" name="year" value={this.state.year} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-calendar" />
+                  </span>
+                </div>
+              </p>
+            </div>
+          </div>
+
+
+          {/* Description */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large" type="text" placeholder="Description" onChange={this.handleChange} id="description" name="description" value={this.state.description} />
                   <span className="icon is-small is-left">
                     <i className="fas fa-book-reader" />
                   </span>
@@ -155,73 +194,40 @@ class Form extends Component {
             </div>
           </div>
 
-      {/* YEAR */}
-      <div className="column">
-                  <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                      <div className="control">
-                        <input className="input" type="text" placeholder="Year" onChange={this.handleChange} id="year" name="year" value={this.state.year} />
-                        <span className="icon is-small is-left">
-                          <i className="fas fa-book-reader" />
-                        </span>
-                      </div>
-                    </p>
-                  </div>
+          {/* Image */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large" type="text" placeholder="Image (URL)" onChange={this.handleChange} id="image" name="image" value={this.state.image} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-align-center" />
+                  </span>
                 </div>
+              </p>
+            </div>
+          </div>
 
 
-        {/* Description */}
-        <div className="column">
-                  <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                      <div className="control">
-                        <input className="input" type="text" placeholder="description" onChange={this.handleChange} id="description" name="description" value={this.state.description} />
-                        <span className="icon is-small is-left">
-                          <i className="fas fa-book-reader" />
-                        </span>
-                      </div>
-                    </p>
-                  </div>
+          {/* Platform */}
+          <div className="column">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large" type="text" placeholder="Where to Watch" onChange={this.handleChange} id="platform" name="platform" value={this.state.platform} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-play-circle" />
+                  </span>
                 </div>
+              </p>
+            </div>
+          </div>
 
-        {/* Image */}
-        <div className="column">
-                  <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                      <div className="control">
-                        <input className="input" type="text" placeholder="image" onChange={this.handleChange} id="image"  name="image" value={this.state.image} />
-                        <span className="icon is-small is-left">
-                          <i className="fas fa-book-reader" />
-                        </span>
-                      </div>
-                    </p>
-                  </div>
-                </div>
-
-
-        {/* Platform */}
-        <div className="column">
-                  <div className="field">
-                    <p className="control has-icons-left has-icons-right">
-                      <div className="control">
-                        <input className="input" type="text" placeholder="platform" onChange={this.handleChange} id="platform"  name="platform" value={this.state.platform} />
-                        <span className="icon is-small is-left">
-                          <i className="fas fa-book-reader" />
-                        </span>
-                      </div>
-                    </p>
-                  </div>
-                </div>
-        
-            {/* SUBMIT */}
-            <div className="column">
-              <button className="button is-link is-rounded mt-1" type="submit">Add Movie</button>
-            </div>        
-      </form>
-
-      {/* <Omdb handleAddMovie={this.props.handleAddMovie.bind(this)}/> */}
-
-      
+          {/* SUBMIT */}
+          <div className="column mb-2">
+            <button className="button is-link is-fullwidth is-medium mt-1" type="submit">Add Movie</button>
+          </div>
+        </form>
       </div>
     )
   }

@@ -114,9 +114,9 @@ class Movieinfo extends Component {
   render() {
     if (this.state.toggleEdit === false) {
       return (
-        <div className="movieInfo column is-4 m-2">
+        <div className="movieInfo column is-4 m-2 p-4">
 
-          <h1 className="is-size-4 has-text-link has-background-warning has-text-centered m-3 is-uppercase has-text-weight-bold	"> Information</h1>
+          <h1 className="is-size-3 has-text-link has-background-warning has-text-centered m-3 p-2 is-uppercase has-text-weight-bold	"> Information</h1>
 
           <figure class="image image is-4by5 m-5">
             {this.props.movie ?
@@ -125,114 +125,114 @@ class Movieinfo extends Component {
           </figure>
 
           <h2 className="is-size-5 has-text-weight-bold m-1">{this.props.movie ? this.state.title : null}</h2>
-          <h2 className="is-size-6 is-italic m-1">{this.props.movie ? this.state.director : null} {this.props.movie ? this.state.year : null}</h2>
+          <h2 className="is-size-6 is-italic ml-1">{this.props.movie ? this.state.director : null} {this.props.movie ? this.state.year : null}</h2>
 
-          <p className="m-1">{this.props.movie ? this.state.description : null}</p>
+          <p className="m-1">{this.props.movie ? this.state.description : null} <span className="is-size-6 is-italic has-text-weight-semibold">{this.props.movie ? "("+this.state.platform+")" : null}</span></p>
 
-          {this.props.movie ? <button className="button is-link" onClick={this.toggleForm}>Edit</button> : null}
+          {this.props.movie ? <button className="button is-danger is-medium mt-1 is-fullwidth" onClick={this.toggleForm}>Edit</button> : null}
         </div>
       )
     } else {
       return (
-        <div className="movieInfo column is-4 m-2">
-          <h1 className="is-size-4 has-text-link has-background-warning has-text-centered m-3 is-uppercase has-text-weight-bold	"> Edit Movie</h1>
+        <div className="movieInfo column is-4 m-2 p-4">
+          <h1 className="is-size-3 has-text-link has-background-warning has-text-centered m-3 p-2 is-uppercase has-text-weight-bold		"> Edit Movie</h1>
 
           <form onSubmit={(e) => this.handleUpdate(this.state.movie._id, e)}>
 
-            {/* TITLE */}
-            <div className="column">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <div className="control">
-                    <input className="input" type="text" placeholder="Title" onChange={this.handleChange} id="title" name="title" value={this.state.title} />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-book-reader" />
-                    </span>
-                  </div>
-                </p>
-              </div>
+             {/* TITLE */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large is-danger" type="text" placeholder="Title" onChange={this.handleChange} id="title" name="title" value={this.state.title} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-film" />
+                  </span>
+                </div>
+              </p>
             </div>
+          </div>
 
-            {/* DIRECTOR */}
-            <div className="column">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <div className="control">
-                    <input className="input" type="text" placeholder="Director" onChange={this.handleChange} id="director" name="director" value={this.state.director} />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-book-reader" />
-                    </span>
-                  </div>
-                </p>
-              </div>
+          {/* DIRECTOR */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large is-danger" type="text" placeholder="Director" onChange={this.handleChange} id="director" name="director" value={this.state.director} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-female" />
+                  </span>
+                </div>
+              </p>
             </div>
+          </div>
 
-            {/* YEAR */}
-            <div className="column">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <div className="control">
-                    <input className="input" type="text" placeholder="Year" onChange={this.handleChange} id="year" name="year" value={this.state.year} />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-book-reader" />
-                    </span>
-                  </div>
-                </p>
-              </div>
+          {/* YEAR */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large is-danger" type="text" placeholder="Year" onChange={this.handleChange} id="year" name="year" value={this.state.year} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-calendar" />
+                  </span>
+                </div>
+              </p>
             </div>
+          </div>
 
 
-            {/* Description */}
-            <div className="column">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <div className="control">
-                    <input className="input" type="text" placeholder="description" onChange={this.handleChange} id="description" name="description" value={this.state.description} />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-book-reader" />
-                    </span>
-                  </div>
-                </p>
-              </div>
+          {/* Description */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large is-danger" type="text" placeholder="Description" onChange={this.handleChange} id="description" name="description" value={this.state.description} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-book-reader" />
+                  </span>
+                </div>
+              </p>
             </div>
+          </div>
 
-            {/* Image */}
-            <div className="column">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <div className="control">
-                    <input className="input" type="text" placeholder="image" onChange={this.handleChange} id="image" name="image" value={this.state.image} />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-book-reader" />
-                    </span>
-                  </div>
-                </p>
-              </div>
+          {/* Image */}
+          <div className="column mb-2">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large is-danger" type="text" placeholder="Image (URL)" onChange={this.handleChange} id="image" name="image" value={this.state.image} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-align-center" />
+                  </span>
+                </div>
+              </p>
             </div>
+          </div>
 
-            {/* Platform */}
-            <div className="column">
-              <div className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <div className="control">
-                    <input className="input" type="text" placeholder="platform" onChange={this.handleChange} id="platform" name="platform" value={this.state.platform} />
-                    <span className="icon is-small is-left">
-                      <i className="fas fa-book-reader" />
-                    </span>
-                  </div>
-                </p>
-              </div>
+
+          {/* Platform */}
+          <div className="column">
+            <div className="field">
+              <p className="control has-icons-left has-icons-right">
+                <div className="control">
+                  <input className="input is-large is-danger" type="text" placeholder="Where to Watch" onChange={this.handleChange} id="platform" name="platform" value={this.state.platform} />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-play-circle" />
+                  </span>
+                </div>
+              </p>
             </div>
-
+          </div>
             {/* SUBMIT */}
             <div className="column">
-              <button className="button is-link is-rounded mt-1" type="submit">Edit Movie</button>
+              <button className="button is-danger is-medium mt-1 is-fullwidth" type="submit">Submit Edit</button>
             </div>
           </form>
-
-          <button className="button is-link" onClick={this.toggleForm}>Back to Movie Information</button>
+          <div className="column">
+          <button className="button is-link is-medium is-fullwidth" onClick={this.toggleForm}>Back to Movie Information</button>
         </div>
-
+</div>
       )
     }
   }

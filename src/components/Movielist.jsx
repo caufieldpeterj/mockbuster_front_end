@@ -11,14 +11,14 @@ class Movielist extends Component {
   }
   render() {
     return (
-      <div className="movieList column is-3 m-2">
-        <h1 className="is-size-4 has-text-link has-background-warning has-text-centered m-3 is-uppercase has-text-weight-bold	">My Watch List</h1>
+      <div className="movieList column is-3 m-2 p-4">
+        <h1 className="is-size-3 has-text-link has-background-warning has-text-centered m-3 p-2 is-uppercase has-text-weight-bold	">Watch List</h1>
 
         {
           this.props.movies.map(movie => {
             return (
               <div className="column mt-1" key={movie._id}>
-                <div class="box" onClick={(e) => this.props.handleViewMovie(e, movie)}>
+                <div className="box" onClick={(e) => this.props.handleViewMovie(e, movie)}>
 
                   <div className="columns is-vcentered">
 

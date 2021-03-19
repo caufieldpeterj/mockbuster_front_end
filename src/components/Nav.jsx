@@ -5,54 +5,19 @@ import Home from './Home'
 import Login from './Login'
 import Signup from './Signup'
 
-// import 'bulma/css/bulma.css'
-// import '../App.sass';
 
-
-// NOTES 3/17/2020
-/* Fix Nav bar dom nesting issues that appeared in console, next need to work on making hamburger drop down is working and include the JS involved in that 
-*/
 
 class Nav extends Component {
   render() {
     return (
 
-      // <Navbar color="warning" style={{ height: '75px' }}>
-        
-      //   <Navbar.Brand>
-      //     <Navbar.Item>
-      //       {/* <Link to="/"> */}
-      //         MOCKBUSTER
-      //       {/* </Link> */}
-      //     </Navbar.Item>
-      //     <Navbar.Burger />
-      //   </Navbar.Brand>
-
-      //   <Navbar.Menu >
-      //     <Navbar.Container position="end">
-      //       <Navbar.Item>
-      //         {/* <Link to="/login"> */}
-      //           <Button color='link'>Log In</Button>
-      //         {/* </Link> */}
-      //       </Navbar.Item>
-      //       <Navbar.Item>
-      //         {/* <Link to="/signup"> */}
-      //           <Button color='link'>Sign Up</Button>
-      //         {/* </Link> */}
-      //       </Navbar.Item>
-      //     </Navbar.Container>
-      //   </Navbar.Menu>
-
-      // </Navbar>
-
-
-
-
       <nav className="navbar is-warning">
         <div className="navbar-brand">
           <Link to="/">
             <figure className="image is-96x96 ml-3">
-              <img src="https://iconape.com/wp-content/png_logo_vector/blockbuster-video-1.png" alt="bbuster" className="py-1 px-1 " />
+              <img src="../img/Blockbuster_Video.png" alt="bbuster" className="py-1 px-1 " />
+              {/* ../img/Blockbuster_Video.png */}
+              {/* https://iconape.com/wp-content/png_logo_vector/blockbuster-video-1.png */}
             </figure>
           </Link>
         </div>
