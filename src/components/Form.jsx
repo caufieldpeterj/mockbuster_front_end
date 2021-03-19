@@ -1,6 +1,8 @@
+// == COMPONENTS == //
 import React, { Component } from 'react'
 
 
+// == CONNECTION TO DB -- Needed to Push Form== //
 let baseURL = 'https://mockbusters.herokuapp.com'
 /*
 if (process.env.NODE_ENV === 'development') {
@@ -13,6 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 class Form extends Component {
   constructor(props) {
     super(props)
+    // == Set State for OMDB API (movie, baseURL, query, etc), Movie Inputs to push to DB == //
     this.state = {
       movies: [],
       title: '',
@@ -22,7 +25,7 @@ class Form extends Component {
       description: '',
       image: '',
       baseURL: 'https://www.omdbapi.com/?',
-      apikey: 'apikey=' + '98e3fb1f',
+      apikey: 'apikey=98e3fb1f',
       query: '&t=',
       movieTitle: '',
       searchURL: '',
@@ -36,6 +39,7 @@ class Form extends Component {
     this.setState({ [event.target.id]: event.target.value })
   }
 
+  // == Submitting the request for OMDB movie info based off of search, then add to state == // 
   handleOmdbSubmit(event) {
     event.preventDefault()
     this.setState({
@@ -58,6 +62,8 @@ class Form extends Component {
     })
   }
 
+
+  // == Submit either OMDB of Custom Movie Info in Form to DB, reset state == // 
   handleSubmit(event) {
     event.preventDefault()
     console.log("Submit Button Pressed")
@@ -102,16 +108,15 @@ class Form extends Component {
     return (
       <div className="movieForm column m-2 p-4 is-warning">
 
-        <h1 className="is-size-3 has-text-link has-background-warning has-text-centered m-3 p-2 is-uppercase has-text-weight-bold	">Add Movie Or TV Show</h1>
+        <h1 className="is-size-3 has-text-link has-background-warning has-text-centered mt-3 mr-3 ml-3 p-2 is-uppercase has-text-weight-bold	">Add Movie Or TV Show</h1>
 
+
+        {/* ==== OMDB SUBMIT FORM ==== */}
         <div className="column">
-          {/* OMDB SUBMIT */}
-
-
-
+          <h3 className="is-size-6 has-text-link mb-2 ">Search for a movie on OMDB</h3>
 
           <form onSubmit={this.handleOmdbSubmit}>
-            <div className="field has-addons is-12 mb-4">
+            <div className="field has-addons is-12 mb-2">
               <p className="control has-icons-left has-icons-right is-expanded">
 
                 <div className="control is-expanded">
@@ -123,7 +128,6 @@ class Form extends Component {
                 </div>
               </p>
 
-
               <div className="control">
                 <button className="button is-link has-background-link is-large" type="submit" value='Find Movie Info'>Find Movie</button>
 
@@ -132,13 +136,12 @@ class Form extends Component {
           </form>
         </div>
 
-
-
-
+        {/* ==== CUSTOM MOVIE SUBMIT FORM WHICH AUTOPOPULATES IF OMDB SEARCH IS USED ==== */}
         <form onSubmit={this.handleSubmit}>
-
+          
           {/* TITLE */}
           <div className="column mb-2">
+            <h3 className="is-size-6 has-text-link mb-2 ">Add your own movie or use autopopulated OMDB Data</h3>
             <div className="field">
               <p className="control has-icons-left has-icons-right">
                 <div className="control">

@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // == COMPONENTS == //
 import Nav from './components/Nav'
-import Form from './components/Form'
 import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
-// import Movielist from './components/Movielist'
-// import Movieinfo from './components/Movieinfo'
+
 
 // == CSS == //
 import './App.css';
-// import 'bulma/css/bulma.css'
-// import './App.sass';
+
 
 // == CONNECTION TO DB == //
 let baseURL = 'https://mockbusters.herokuapp.com';
@@ -24,7 +21,6 @@ if (process.env.NODE_ENV === 'development') {
   baseURL = 'https://mockbusters.herokuapp.com'
 }
 */
-console.log('current base URL ' + baseURL);
 
 class App extends Component {
   constructor(props) {
@@ -51,15 +47,15 @@ class App extends Component {
         err => console.log(err))
   }
 
-
+// == Rendering Page Components including NavBar, Body, Footer == //
   render() {
     return (
 
       <div>
-        {/* NAV BAR */}
+      {/* NAV BAR */}
         <Nav />
 
-        {/* REACT ROUTES */}
+      {/* REACT ROUTES */}
         <Switch>
 
           {/* //Pass Current State as Props to the Home Component */}
@@ -69,6 +65,7 @@ class App extends Component {
           <Route path="/signup" exact component={Signup} />
         </Switch>
 
+      {/* FOOTER */}
         <footer className="footer">
           <div className="content has-text-centered">
             <p>
@@ -76,7 +73,6 @@ class App extends Component {
             </p>
           </div>
         </footer>
-
       </div>
     );
   }

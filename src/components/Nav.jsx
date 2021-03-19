@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch, Redirect } from 'react-router-dom';
-import { Button, Navbar } from 'react-bulma-components'
-import Home from './Home'
+import { Link, Route, Switch } from 'react-router-dom';
 import Login from './Login'
 import Signup from './Signup'
-
-
 
 class Nav extends Component {
   render() {
@@ -24,14 +20,11 @@ class Nav extends Component {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-
-    
               {/* <Link to="/signup">
                 <a className="button is-link m-3">
                   <strong>Sign up</strong>
                 </a>
               </Link>
-
               <Link to="/login">
                 <a className="button is-info m-3">
                   Log in
@@ -40,14 +33,13 @@ class Nav extends Component {
             </div>
           </div>
         </div>
-
         <Switch>
 
-{/* //Pass Current State as Props to the Home Component */}
-{/* HOME.JSX is the parent of the ADD A MOVIE/WATCHLIST/INFORMATION Containers */}
-<Route path="/login" exact component={Login} />
-<Route path="/signup" exact component={Signup} />
-</Switch>
+          {/* //Pass Current State as Props to the Home Component */}
+          {/* HOME.JSX is the parent of the ADD A MOVIE/WATCHLIST/INFORMATION Containers */}
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+        </Switch>
       </nav>
     )
   }
