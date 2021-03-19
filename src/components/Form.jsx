@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
+import Omdb from './Omdb'
 
 
 // import { Field, Control, Label, Input, Textarea, Select, Checkbox, Radio, Help, InputFile } from 'react-bulma-components'
@@ -20,17 +21,45 @@ class Form extends Component {
       movies: [],
       title: '',
       director: '',
-      year: 0,
+      year: '',
       platform: '',
       description: '',
-      image: ''
+      image: '',
+      baseURL: 'http://www.omdbapi.com/?',
+      apikey: 'apikey=' + '98e3fb1f',
+      query: '&t=',
+      movieTitle: '',
+      searchURL: '', 
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleOmdbSubmit = this.handleOmdbSubmit.bind(this)
   }
 
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value })
+  }
+
+  handleOmdbSubmit (event) {
+    event.preventDefault()
+    this.setState({
+      searchURL: this.state.baseURL + this.state.apikey + this.state.query +  this.state.movieTitle
+    }, () => {
+      fetch(this.state.searchURL)
+      .then(response => {
+        return response.json()
+      }).then(json => this.setState({
+        movie: json,
+        movieTitle:'',
+        title: json.Title,
+        director: json.Director,
+        year: '',
+        platform: json.Type,
+        description: json.Plot,
+        image: json.Poster
+      }), 
+      err => console.log(err))
+    })
   }
 
   handleSubmit(event) {
@@ -55,6 +84,7 @@ class Form extends Component {
       //A promise that takes the props and envokes the "handleAddBookmark" method found in app.js
     }).then(res => res.json())
       .then(resJson => {
+        console.log(resJson);
         this.props.handleAddMovie(resJson)
         this.setState({
           title: '',
@@ -77,6 +107,23 @@ class Form extends Component {
       <div className="movieForm column m-2">
         
         <h1 className="is-size-4 has-text-link has-background-warning has-text-centered m-3 is-uppercase has-text-weight-bold	">Add a Movie</h1>
+
+        <form onSubmit={this.handleOmdbSubmit}>
+          <label htmlFor='movieTitle'>OMDB Title</label>
+          <input
+            id='movieTitle'
+            type='text'
+            value={this.state.movieTitle}
+            onChange={this.handleChange}
+          />
+          <input
+            type='submit'
+            value='Find Movie Info'
+          />
+        </form>
+
+
+
 
         <form onSubmit={this.handleSubmit}>
 
@@ -171,6 +218,8 @@ class Form extends Component {
               <button className="button is-link is-rounded mt-1" type="submit">Add Movie</button>
             </div>        
       </form>
+
+      {/* <Omdb handleAddMovie={this.props.handleAddMovie.bind(this)}/> */}
 
       
       </div>
